@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AbsenKu - Fany Maulidia</title>
+  <style>
+    body {
+      font-family: Poppins, sans-serif;
+      background: #f0f4f8;
+      text-align: center;
+      padding: 40px;
+    }
+    h1 {
+      color: #2c3e50;
+    }
+    form {
+      background: white;
+      padding: 20px;
+      border-radius: 15px;
+      width: 300px;
+      margin: 0 auto;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    input, select, button {
+      width: 90%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+    button {
+      background: #27ae60;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #219150;
+    }
+  </style>
+</head>
+<body>
+  <h1>📋 AbsenKu</h1>
+  <p>Silakan isi form absensi di bawah ini:</p>
+
+  <form id="absenForm">
+    <input type="text" id="nama" placeholder="Nama Lengkap" required><br>
+    <input type="text" id="kelas" placeholder="Kelas (misal: X5)" required><br>
+    <select id="keterangan">
+      <option value="Hadir">Hadir</option>
+      <option value="Izin">Izin</option>
+      <option value="Sakit">Sakit</option>
+    </select><br>
+    <button type="submit">Kirim Absen</button>
+  </form>
+
+  <p id="hasil"></p>
+
+  <script>
+    document.getElementById("absenForm").addEventListener("submit", function(e){
+      e.preventDefault();
+      const nama = document.getElementById("nama").value;
+      const kelas = document.getElementById("kelas").value;
+      const ket = document.getElementById("keterangan").value;
+      const waktu = new Date().toLocaleString("id-ID");
+      
+      document.getElementById("hasil").innerHTML =
+        `✅ ${nama} (${kelas}) tercatat ${ket} pada ${waktu}`;
+      
+      // Di sini nanti bisa ditambah kode untuk simpan ke database / Google Sheet
+    });
+  </script>
+</body>
+</html>
